@@ -8,9 +8,9 @@ CREATE TABLE tasks (
     id INT NOT NULL auto_increment,
     status VARCHAR(30) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    description VARCHAR(30),
+    description VARCHAR(500),
     PRIMARY KEY(id)
-)
+);
 
 INSERT INTO TodoList.tasks (status, created_at, description) VALUES
     ('pendente', NOW(), 'realizar manutenção na maquina'),
