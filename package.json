@@ -1,0 +1,35 @@
+{
+  "name": "technical-challenge",
+  "version": "1.0.0",
+  "description": "desafio tecnico feito pela trybe para uma simulação de processo seletivo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oieusouopi/-technical-challenge.git"
+  },
+  "author": "Rafael Santos Carvalho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Oieusouopi/-technical-challenge/issues"
+  },
+  "homepage": "https://github.com/Oieusouopi/-technical-challenge#readme",
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.18.0",
+    "eslint-config-google": "^0.14.0",
+    "mocha": "^10.0.0",
+    "mysql-import": "^5.0.21",
+    "nodemon": "^2.0.16",
+    "sinon": "^14.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3"
+  }
+}
