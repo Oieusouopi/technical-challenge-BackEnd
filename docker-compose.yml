@@ -1,0 +1,35 @@
+services:
+  node:
+    image: node:16
+    container_name: node_technicalChallenger
+    command: bash
+    stdin_open: true
+    tty: true
+    restart: always
+    ports:
+    - 3000:3000
+    volumes:
+    - ./:/index
+    working_dir: /index
+    # networks:
+    # - nodeapp
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_HOST: db
+
+  ubuntu:
+    image: ubuntu:20.04
+    container_name: ubuntu_SO
+    command: bash
+    restart: on-failure
+
+  db:
+    image: mysql:5.7
+    container_name: todoList_db
+    restart: on-failure
+    ports:
+    - 3306:3306
+    environment:
+    -  MYSQL_ROOT_PASSWORD=password
+    -  MYSQL_DATABASE=TodoList
