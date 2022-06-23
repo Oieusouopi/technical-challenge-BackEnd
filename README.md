@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Technich challenge - Back-End
 
 For any problems with the project contact us via email rafasc866@gmail.com
