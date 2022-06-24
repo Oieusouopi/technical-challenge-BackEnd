@@ -29,14 +29,14 @@ describe('todoModels.createTask()', () => {
     sinon.stub(connection, 'execute').resolves(createTaskMock.newId);
   });
 
-  afterEach(() => {
+  afterEach(async () => {
     connection.execute.restore();
   });
 
   it('Function to create a task correctly on models', async () => {
     const {newId, title, status, date, description} = createTaskMock;
-    const idTaskCreate = await taskListModels.createTask(title,
+    const returnTasKCreate = await taskListModels.createTask(title,
         status, date, description);
-    expect(idTaskCreate).to.be.deep.equal(newId);
+    expect(returnTasKCreate).to.be.deep.equal(newId);
   });
 });
