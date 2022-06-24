@@ -9,11 +9,12 @@ CREATE TABLE tasks (
     title varchar(30) NOT NULL,
     status VARCHAR(30) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    description VARCHAR(500),
+    description VARCHAR(500) NOT NULL,
     PRIMARY KEY(id)
 );
 
 INSERT INTO TodoList.tasks (title, status, created_at, description) VALUES
     ('manutenção','pendente', NOW(), 'realizar manutenção na maquina'),
     ('limpeza','andamaneto', NOW(), 'desentupir os canos'),
-    ('atendimento','pronto', NOW(), 'atender os clientes de empresa x');
+    ('atendimento','pronto', NOW(), 'atender os clientes de empresa x'),
+    ('atendimento', 'pronto', NOW(), 'organizar as mesas');
