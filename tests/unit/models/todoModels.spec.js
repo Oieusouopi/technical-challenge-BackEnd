@@ -18,7 +18,7 @@ describe('todoModels.getAllTaskList()', () => {
     connection.execute.restore();
   });
 
-  it('Function to get all task list correctly on models', async () => {
+  it('1 - Function to get all task list correctly on models', async () => {
     const allTaskList = await taskListModels.getAllTaskList();
     expect(allTaskList).to.be.deep.equal(...allTaskMock);
   });
@@ -33,7 +33,7 @@ describe('todoModels.createTask()', () => {
     connection.execute.restore();
   });
 
-  it('Function to create a task correctly on models', async () => {
+  it('1 - Function to create a task correctly on models', async () => {
     const {newId, title, status, date, description} = createTaskMock;
     const returnTasKCreate = await taskListModels.createTask(title,
         status, date, description);
