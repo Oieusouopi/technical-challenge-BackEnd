@@ -3,7 +3,7 @@ const {expect} = require('chai');
 const sinon = require('sinon');
 const allTaskMock = require('../helper/allTaskMock');
 
-const todoModels = require('../../../src/models/todoModels');
+const taskListModels = require('../../../src/models/taskListModels');
 const connection = require('../../../src/models/connection');
 
 describe('todoModels()', () => {
@@ -15,8 +15,8 @@ describe('todoModels()', () => {
     connection.execute.restore();
   });
 
-  it('Get all task list correctly', async () => {
-    const allTaskList = await todoModels.getAllTaskList();
+  it('Function to get all task list correctly on models', async () => {
+    const allTaskList = await taskListModels.getAllTaskList();
     expect(allTaskList).to.be.deep.equal(...allTaskMock);
   });
 });
