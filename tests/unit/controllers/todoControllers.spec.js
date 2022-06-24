@@ -7,7 +7,7 @@ const taskListControllers = require(
     '../../../src/controllers/taskListControllers');
 const allTaskList = require('../helper/allTaskMock');
 
-describe('todoControllers()', () => {
+describe('todoControllers.getAllTaskList()', () => {
   const req = {};
   const res = {};
   const next = {};

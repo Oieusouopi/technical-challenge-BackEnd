@@ -7,7 +7,7 @@ const allTaskMock = require('../helper/allTaskMock');
 const taskListModels = require('../../../src/models/taskListModels');
 const taskListServices = require('../../../src/services/taskListServices');
 
-describe('todoServices()', () => {
+describe('todoServices.getAllTaskList()', () => {
   beforeEach(() => {
     sinon.stub(taskListModels, 'getAllTaskList').resolves(allTaskMock[0]);
   });
