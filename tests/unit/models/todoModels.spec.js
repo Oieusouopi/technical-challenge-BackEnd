@@ -15,7 +15,7 @@ describe('todoModels()', () => {
     connection.execute.restore();
   });
 
-  it('Get all task list correctly', async () => {
+  it('Function to get all task list correctly on models', async () => {
     const allTaskList = await todoModels.getAllTaskList();
     expect(allTaskList).to.be.deep.equal(...allTaskMock);
   });

@@ -16,7 +16,7 @@ describe('todoServices()', () => {
     todoModels.getAllTaskList.restore();
   });
 
-  it('Get all tasks list correctly', async () => {
+  it('function to get all tasks list correctly on services', async () => {
     const allTaskList = await todoServices.getAllTaskList();
     expect(allTaskList).to.be.equal(...allTaskMock);
   });
