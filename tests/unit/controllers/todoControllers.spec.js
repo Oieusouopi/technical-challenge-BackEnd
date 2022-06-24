@@ -2,7 +2,9 @@ const {describe, it} = require('mocha');
 const {expect} = require('chai');
 const sinon = require('sinon');
 
-const todoServices = require('../../../src/services/todoServices');
+const taskListServices = require('../../../src/services/taskListServices');
+const taskListControllers = require(
+    '../../../src/controllers/taskListControllers');
 const allTaskList = require('../helper/allTaskMock');
 
 describe('todoControllers()', () => {
@@ -15,16 +17,16 @@ describe('todoControllers()', () => {
     res.json = sinon.stub().returns();
     res.next = sinon.stub().returns();
 
-    sinon.stub(todoServices, 'getAllTaskList').resolves(allTaskList);
+    sinon.stub(taskListServices, 'getAllTaskList').resolves(allTaskList);
   });
 
   afterEach(() => {
-    todoServices.getAllTaskList.restore();
+    taskListServices.getAllTaskList.restore();
   });
 
   it(`function to get all tasks from the list in the controller
     returning a res status 200`, async () => {
-    await todoControllers.getAllTaskList(req, res, next);
-    expect(res.status.calledWith(200)).to.be.equal.true;
+    await taskListControllers.getAllTaskList(req, res, next);
+    expect(res.status.calledWith(200)).to.be.true;
   });
 });

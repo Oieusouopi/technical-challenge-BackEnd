@@ -1,8 +1,8 @@
-const todoServices = require('../services/todoServices');
+const taskListServices = require('../services/taskListServices');
 
 const getAllTaskList = async (_req, res, next) => {
   try {
-    const allTaskList = await todoServices.getAllTaskList();
+    const allTaskList = await taskListServices.getAllTaskList();
     res.status(200).json(allTaskList);
   } catch (error) {
     next(error);
