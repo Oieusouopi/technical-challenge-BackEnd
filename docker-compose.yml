@@ -18,11 +18,11 @@ services:
       MYSQL_PASSWORD: password
       MYSQL_HOST: db
 
-  ubuntu:
-    image: ubuntu:20.04
-    container_name: ubuntu_SO
-    command: bash
-    restart: on-failure
+  # ubuntu:
+  #   image: ubuntu:20.04
+  #   container_name: ubuntu_SO
+  #   command: bash
+  #   restart: on-failure
 
   db:
     image: mysql:5.7
