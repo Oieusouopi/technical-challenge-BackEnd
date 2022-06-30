@@ -50,7 +50,6 @@ describe('2 - todoControllers.createTask()', () => {
       title: 'atendimento',
       status: 'pendente',
       description: 'limpeza de papeis que não utilizaremos',
-      date: Date.now(),
     };
 
     sinon.stub(taskListServices, 'createTask')
