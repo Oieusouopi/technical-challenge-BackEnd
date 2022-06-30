@@ -6,9 +6,9 @@ const getAllTaskList = async () => {
   return allTaskList;
 };
 
-const createTask = async (title, status, date, description) => {
+const createTask = async (title, status, description) => {
   const newTask = await connection.execute(queryCreateTask,
-      [title, status, date, description]);
+      [title, status, description]);
   return newTask;
 };
 

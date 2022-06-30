@@ -1,5 +1,4 @@
 const taskListServices = require('../services/taskListServices');
-//  aa
 
 const getAllTaskList = async (_req, res, next) => {
   try {
@@ -12,9 +11,9 @@ const getAllTaskList = async (_req, res, next) => {
 
 const createTask = async (req, res, next) => {
   try {
-    const {title, status, description, date} = req.body;
+    const {title, status, description} = req.body;
     const messageToCreatedTask = await taskListServices
-        .createTask(title, status, description, date);
+        .createTask(title, status, description);
     res.status(201).json(messageToCreatedTask);
   } catch (error) {
     next(error);

@@ -5,9 +5,8 @@ const getAllTaskList = async () => {
   return allTaskList;
 };
 
-const createTask = async (title, status, description, date) => {
-  const dateFormat = new Date(date);
-  await taskListModels.createTask(title, status, dateFormat, description);
+const createTask = async (title, status, description) => {
+  await taskListModels.createTask(title, status, description);
   const messageToCreatedTask = 'Task created sucessfully';
   return messageToCreatedTask;
 };
