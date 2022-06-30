@@ -9,7 +9,6 @@ const getAllTaskList = async () => {
 const createTask = async (title, status, date, description) => {
   const newTask = await connection.execute(queryCreateTask,
       [title, status, date, description]);
-  console.log(createTask);
   return newTask;
 };
 
