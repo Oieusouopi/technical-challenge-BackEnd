@@ -9,7 +9,7 @@ const allTaskMock = require('../helper/allTaskMock');
 const taskListModels = require('../../../src/models/taskListModels');
 const connection = require('../../../src/models/connection');
 
-describe('todoModels.getAllTaskList()', () => {
+describe('1 - todoModels.getAllTaskList()', () => {
   beforeEach(() => {
     sinon.stub(connection, 'execute').resolves(allTaskMock);
   });
@@ -24,7 +24,7 @@ describe('todoModels.getAllTaskList()', () => {
   });
 });
 
-describe('todoModels.createTask()', () => {
+describe('2 - todoModels.createTask()', () => {
   beforeEach(() => {
     sinon.stub(connection, 'execute').resolves(createTaskMock.newId);
   });
