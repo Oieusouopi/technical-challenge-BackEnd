@@ -8,7 +8,7 @@ const taskListModels = require('../../../src/models/taskListModels');
 const taskListServices = require('../../../src/services/taskListServices');
 const createTaskMock = require('../helper/createTaskMock');
 
-describe('todoServices.getAllTaskList()', () => {
+describe('1 - todoServices.getAllTaskList()', () => {
   beforeEach(() => {
     sinon.stub(taskListModels, 'getAllTaskList').resolves(allTaskMock[0]);
   });
@@ -23,7 +23,7 @@ describe('todoServices.getAllTaskList()', () => {
   });
 });
 
-describe('todoServices.createTask()', () => {
+describe('2 - todoServices.createTask()', () => {
   beforeEach(() => {
     sinon.stub(taskListModels, 'createTask').resolves(createTaskMock.newId);
   });

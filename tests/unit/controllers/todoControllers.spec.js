@@ -7,7 +7,7 @@ const taskListControllers = require(
     '../../../src/controllers/taskListControllers');
 const allTaskList = require('../helper/allTaskMock');
 
-describe('todoControllers.getAllTaskList()', () => {
+describe('1 - todoControllers.getAllTaskList()', () => {
   const req = {};
   const res = {};
   const next = () => {};
@@ -37,7 +37,7 @@ describe('todoControllers.getAllTaskList()', () => {
   });
 });
 
-describe('todoControllers.createTask()', () => {
+describe('2 - todoControllers.createTask()', () => {
   const req = {};
   const res = {};
   const next = () => {};
@@ -46,6 +46,12 @@ describe('todoControllers.createTask()', () => {
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
     // next = sinon.stub().returns();
+    req.body = {
+      title: 'atendimento',
+      status: 'pendente',
+      description: 'limpeza de papeis que não utilizaremos',
+      date: Date.now(),
+    };
 
     sinon.stub(taskListServices, 'createTask')
         .resolves('Task created sucessfully');
