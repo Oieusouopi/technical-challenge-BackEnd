@@ -14,7 +14,7 @@ describe('1 - taskListModels.getAllTaskList() wihout error', () => {
     sinon.stub(connection, 'execute').resolves(allTaskMock);
   });
 
-  afterEach(async () => {
+  afterEach(() => {
     connection.execute.restore();
   });
 
@@ -29,7 +29,7 @@ describe('2 - taskListModels.createTask() wihout error', () => {
     sinon.stub(connection, 'execute').resolves(createTaskMock.newId);
   });
 
-  afterEach(async () => {
+  afterEach(() => {
     connection.execute.restore();
   });
 
@@ -38,5 +38,21 @@ describe('2 - taskListModels.createTask() wihout error', () => {
     const returnTasKCreate = await taskListModels.createTask(title,
         status, date, description);
     expect(returnTasKCreate).to.be.deep.equal(newId);
+  });
+});
+
+describe('3 - taskListModels.deleteTask() wihout error', () => {
+  beforeEach(() => {
+    sinon.stub(connection, 'execute').resolves(true);
+  });
+
+  afterEach(async () => {
+    connection.execute.restore();
+  });
+
+  it('3 - function to delete a task correctly on models', async () => {
+    const returnFuncDeleteTask = await taskListModels
+        .deleteTask(createTaskMock.newId);
+    expect(returnFuncDeleteTask).to.be.true;
   });
 });
