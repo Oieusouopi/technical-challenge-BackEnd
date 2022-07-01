@@ -9,6 +9,18 @@ const getAllTaskList = async (_req, res, next) => {
   }
 };
 
+const createTask = async (req, res, next) => {
+  try {
+    const {title, status, description} = req.body;
+    const messageToCreatedTask = await taskListServices
+        .createTask(title, status, description);
+    res.status(201).json(messageToCreatedTask);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getAllTaskList,
+  createTask,
 };
