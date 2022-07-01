@@ -66,3 +66,30 @@ describe('2 - taskListControllers.createTask() wihout error', () => {
     expect(res.status.calledWith(201)).to.be.true;
   });
 });
+
+describe('3 - taskListControllers.deleteTask() wihout error', () => {
+  const req = {};
+  const res = {};
+  const next = () => {};
+
+  beforeEach(() => {
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+    req.body = {
+      id: 1,
+    };
+
+    sinon.stub(taskListServices, 'deleteTask')
+        .resolves('Task deleted sucessfully');
+  });
+
+  afterEach(() => {
+    taskListServices.deleteTask.restore();
+  });
+
+  it(`1 - Function to delete task in the controller
+  returng a res status 204`, async () => {
+    await taskListControllers.deleteTask(req, res, next);
+    expect(res.status.calledWith(204)).to.be.true;
+  });
+});
