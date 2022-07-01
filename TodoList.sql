@@ -14,7 +14,7 @@ CREATE TABLE tasks (
 );
 
 INSERT INTO TodoList.tasks (title, status, description) VALUES
-    ('manutenção','pendente', 'realizar manutenção na maquina'),
-    ('limpeza','andamaneto', 'desentupir os canos'),
-    ('atendimento','pronto', 'atender os clientes de empresa x'),
-    ('atendimento', 'pronto', 'organizar as mesas');
+    ('manutenção','Pendente', 'realizar manutenção na maquina'),
+    ('limpeza','Em Andamaneto', 'desentupir os canos'),
+    ('atendimento','Sucesso', 'atender os clientes de empresa x'),
+    ('atendimento', 'Sucesso', 'organizar as mesas');
