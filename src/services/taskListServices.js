@@ -12,7 +12,7 @@ const getAllTaskList = async () => {
 };
 
 const titleValidation = (title) => {
-  if (title.length > 50) {
+  if (title.length > 30) {
     throw validMessageCode(MESSAGE.TITLESIZE, HTTPSCODE.UNPROCESSABLE);
   }
 };
