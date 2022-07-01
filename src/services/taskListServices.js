@@ -23,7 +23,7 @@ const statusValidation = (status) => {
       .find((validStatus) => validStatus === status);
 
   if (!returnFind) {
-    throw validMessageCode(MESSAGE.STATUSERROR, HTTPSCODE.BAD_REQUEST);
+    throw validMessageCode(MESSAGE.STATUSERROR, HTTPSCODE.UNPROCESSABLE);
   }
 };
 
