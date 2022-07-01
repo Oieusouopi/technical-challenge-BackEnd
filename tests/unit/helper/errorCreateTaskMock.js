@@ -7,4 +7,4 @@ const errorCreateTaskMock = [[
   },
 ]];
 
-export default errorCreateTaskMock;
+module.exports = errorCreateTaskMock;
