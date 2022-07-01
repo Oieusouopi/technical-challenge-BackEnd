@@ -27,15 +27,38 @@ const statusValidation = (status) => {
   }
 };
 
+const descriptionValidation = (description) => {
+  if (description.length > 500) {
+    throw validMessageCode(MESSAGE.DESCRIPTIONERROR, HTTPSCODE.UNPROCESSABLE);
+  }
+};
+
 const createTask = async (title, status, description) => {
   titleValidation(title);
   statusValidation(status);
+  descriptionValidation(description);
   await taskListModels.createTask(title, status, description);
   const messageToCreatedTask = 'Task created sucessfully';
   return messageToCreatedTask;
 };
 
+const idValidation = async (id) => {
+  const allTaskList = await taskListModels.getAllTaskList();
+  const idTaskValid = allTaskList.find((task) => task.id === id);
+  if (!idTaskValid) {
+    throw validMessageCode(MESSAGE.IDINVALID, HTTPSCODE.UNPROCESSABLE);
+  }
+};
+
+const deleteTask = async (id) => {
+  idValidation(id);
+  await taskListModels.deleteTask(id);
+  const messageToDeleteTask = 'Task deleted sucessfully';
+  return messageToDeleteTask;
+};
+
 module.exports = {
   getAllTaskList,
   createTask,
+  deleteTask,
 };
