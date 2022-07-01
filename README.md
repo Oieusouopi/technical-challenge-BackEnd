@@ -5,6 +5,9 @@ For any problems with the project contact us via email rafasc866@gmail.com
 ## About
 The company Ebytr is having problems with productivity/control because collaborating people have been having diifficulty in organizing their individual tasks. For this reason the product management Carolina Bigonha decided to implement a new way of organizing individual tasks.
 
+## This Project
+>This part of the project is to create a database for the to-do lists and make a CRUD for the to-do list.
+
 ## Before starting the project
 
   🐳 Using docker
@@ -18,4 +21,15 @@ The company Ebytr is having problems with productivity/control because collabora
 
   > install dependecies with `npm install`
 
-  ⚠ Wanted ⚠ if you choose to  use Docker **ALL** the commnads in `package.json` (npm start, npm test, npm run dev, ...) must be executed **IN** container, that is, in the terminal that appears after executing the command `docker exec` mentioned above. 
+  ⚠ Wanted ⚠ if you choose to  use Docker **ALL** the commnads in `package.json` (npm start, npm test, npm run dev, ...) must be executed **IN** container, that is, in the terminal that appears after executing the command `docker exec` mentioned above.
+
+## Technologies used
+- Docker.
+- Nodejs(express).
+- Eslint.
+- API Rest.
+- Unit Test: Mocha, Sinon, Chai.
+- NYC.
+- MYSQL.
+- Nodemon.
+- DotEnv.
