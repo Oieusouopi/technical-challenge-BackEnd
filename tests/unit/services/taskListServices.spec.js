@@ -90,3 +90,19 @@ describe('taskListServices.createTask() with error', () => {
     }
   });
 });
+
+describe('taskListServices.deleteTask() wihout error', () => {
+  beforeEach(() => {
+    sinon.stub(taskListModels, 'deleteTask').resolves(true);
+  });
+
+  afterEach(() => {
+    taskListModels.deleteTask.restore();
+  });
+
+  it('Function to delete task from the list in the services', async () => {
+    const returnFuncDeleteTask = await taskListServices
+        .deleteTask(createTaskMock.newId);
+    expect(returnFuncDeleteTask).to.be.equal('Task deleted sucessfully');
+  });
+});
