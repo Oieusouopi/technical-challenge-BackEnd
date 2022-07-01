@@ -58,11 +58,35 @@ describe('taskListServices.createTask() with error', () => {
   to create tasks has size wrong`, async () => {
     try {
       const {description, status} = createTaskMock;
-      const {TITLEERRORSIZE} = errorCreateTaskMock;
-      await taskListServices.createTask(TITLEERRORSIZE, status, description);
+      const {title} = errorCreateTaskMock;
+      await taskListServices
+          .createTask(title, status, description);
     } catch (error) {
       expect(error).to.deep
           .equal(validMessageCode(validMessagesMock.TITLEMOCKSIZE, 422));
+    }
+  });
+
+  it(`2 - if \"status"\ on function to create task has error`, async () => {
+    try {
+      const {description, title} = createTaskMock;
+      const {status} = errorCreateTaskMock;
+      await taskListServices.createTask(title, status, description);
+    } catch (error) {
+      expect(error).to.deep
+          .equal(validMessageCode(validMessagesMock.STATUSERRORMOCK, 422));
+    }
+  });
+
+  it(`3 - if \"describe"\ on function to create task has error`, async () => {
+    try {
+      const {status, title} = createTaskMock;
+      const {description} = errorCreateTaskMock;
+      await taskListServices
+          .createTask(title, status, description);
+    } catch (error) {
+      expect(error).to.deep
+          .equal(validMessageCode(validMessagesMock.DESCRIPTIONERRORMOCK, 422));
     }
   });
 });
