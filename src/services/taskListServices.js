@@ -44,14 +44,14 @@ const createTask = async (title, status, description) => {
 
 const idValidation = async (id) => {
   const allTaskList = await taskListModels.getAllTaskList();
-  const idTaskValid = allTaskList.find((task) => task.id === id);
+  const idTaskValid = allTaskList.some((task) => task.id === Number(id));
   if (!idTaskValid) {
     throw validMessageCode(MESSAGE.IDINVALID, HTTPSCODE.UNPROCESSABLE);
   }
 };
 
 const deleteTask = async (id) => {
-  idValidation(id);
+  await idValidation(id);
   await taskListModels.deleteTask(id);
   const messageToDeleteTask = 'Task deleted sucessfully';
   return messageToDeleteTask;
