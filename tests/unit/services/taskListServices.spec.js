@@ -22,7 +22,7 @@ describe('1 - taskListServices.getAllTaskList() wihout error', () => {
     taskListModels.getAllTaskList.restore();
   });
 
-  it('1 - function to get all tasks list correctly on services', async () => {
+  it('1 - Function to get all tasks list correctly on services', async () => {
     const allTaskList = await taskListServices.getAllTaskList();
     expect(allTaskList).to.be.equal(...allTaskMock);
   });
@@ -37,7 +37,7 @@ describe('2 - taskListServices.createTask() wihout error', () => {
     taskListModels.createTask.restore();
   });
 
-  it('1 - function to create tasks correctly on services', async () => {
+  it('1 - Function to create tasks correctly on services', async () => {
     const {title, description, status} = createTaskMock;
     const returnTaskCreate = await taskListServices
         .createTask(title, status, description);
@@ -45,7 +45,7 @@ describe('2 - taskListServices.createTask() wihout error', () => {
   });
 });
 
-describe('taskListServices.createTask() with error', () => {
+describe('3 - taskListServices.createTask() with error', () => {
   beforeEach(() => {
     sinon.stub(taskListModels, 'createTask').resolves();
   });
@@ -54,7 +54,7 @@ describe('taskListServices.createTask() with error', () => {
     taskListModels.createTask.restore();
   });
 
-  it(`1 - if \"title"\ on function
+  it(`1 - If \"title"\ on function
   to create tasks has size wrong`, async () => {
     try {
       const {description, status} = createTaskMock;
@@ -67,7 +67,7 @@ describe('taskListServices.createTask() with error', () => {
     }
   });
 
-  it(`2 - if \"status"\ on function to create task has error`, async () => {
+  it(`2 - If \"status"\ on function to create task has error`, async () => {
     try {
       const {description, title} = createTaskMock;
       const {status} = errorCreateTaskMock;
@@ -78,7 +78,7 @@ describe('taskListServices.createTask() with error', () => {
     }
   });
 
-  it(`3 - if \"describe"\ on function to create task has error`, async () => {
+  it(`3 - If \"describe"\ on function to create task has error`, async () => {
     try {
       const {status, title} = createTaskMock;
       const {description} = errorCreateTaskMock;
@@ -91,7 +91,7 @@ describe('taskListServices.createTask() with error', () => {
   });
 });
 
-describe('taskListServices.deleteTask() wihout error', () => {
+describe('4 - taskListServices.deleteTask() wihout error', () => {
   beforeEach(() => {
     sinon.stub(taskListModels, 'deleteTask').resolves(true);
   });
@@ -100,9 +100,17 @@ describe('taskListServices.deleteTask() wihout error', () => {
     taskListModels.deleteTask.restore();
   });
 
-  it('Function to delete task from the list in the services', async () => {
+  it('1 - Function to delete a task correctly on service', async () => {
     const returnFuncDeleteTask = await taskListServices
         .deleteTask(createTaskMock.newId);
     expect(returnFuncDeleteTask).to.be.equal('Task deleted sucessfully');
   });
 });
+
+// describe('5 - taskListServices.editTask() wihout error', () => {
+//   it('1 - Function to edit a task from the task list in service', () => {
+//     beforeEach(() => {
+
+//     });
+//   });
+// });
