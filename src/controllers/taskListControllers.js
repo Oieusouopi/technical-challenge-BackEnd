@@ -21,7 +21,19 @@ const createTask = async (req, res, next) => {
   }
 };
 
+const deleteTask = async (req, res, next) => {
+  try {
+    const {id} = req.params;
+    const messageToDeletedTask = await taskListServices
+        .deleteTask(id);
+    res.status(HTTPSCODE.NO_CONTENT).json(messageToDeletedTask);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getAllTaskList,
   createTask,
+  deleteTask,
 };
