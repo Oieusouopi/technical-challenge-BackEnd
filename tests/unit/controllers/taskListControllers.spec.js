@@ -75,9 +75,7 @@ describe('3 - taskListControllers.deleteTask() wihout error', () => {
   beforeEach(() => {
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
-    req.body = {
-      id: 1,
-    };
+    req.params = {id: 1};
 
     sinon.stub(taskListServices, 'deleteTask')
         .resolves('Task deleted sucessfully');
