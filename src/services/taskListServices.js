@@ -12,7 +12,7 @@ const getAllTaskList = async () => {
 };
 
 const titleValidation = (title) => {
-  if (title.length > 50) {
+  if (title.length > 30) {
     throw validMessageCode(MESSAGE.TITLESIZE, HTTPSCODE.UNPROCESSABLE);
   }
 };
@@ -23,19 +23,42 @@ const statusValidation = (status) => {
       .find((validStatus) => validStatus === status);
 
   if (!returnFind) {
-    throw validMessageCode(MESSAGE.STATUSERROR, HTTPSCODE.BAD_REQUEST);
+    throw validMessageCode(MESSAGE.STATUSERROR, HTTPSCODE.UNPROCESSABLE);
+  }
+};
+
+const descriptionValidation = (description) => {
+  if (description.length > 500) {
+    throw validMessageCode(MESSAGE.DESCRIPTIONERROR, HTTPSCODE.UNPROCESSABLE);
   }
 };
 
 const createTask = async (title, status, description) => {
   titleValidation(title);
   statusValidation(status);
+  descriptionValidation(description);
   await taskListModels.createTask(title, status, description);
   const messageToCreatedTask = 'Task created sucessfully';
   return messageToCreatedTask;
 };
 
+const idValidation = async (id) => {
+  const allTaskList = await taskListModels.getAllTaskList();
+  const idTaskValid = allTaskList.some((task) => task.id === Number(id));
+  if (!idTaskValid) {
+    throw validMessageCode(MESSAGE.IDINVALID, HTTPSCODE.UNPROCESSABLE);
+  }
+};
+
+const deleteTask = async (id) => {
+  await idValidation(id);
+  await taskListModels.deleteTask(id);
+  const messageToDeleteTask = 'Task deleted sucessfully';
+  return messageToDeleteTask;
+};
+
 module.exports = {
   getAllTaskList,
   createTask,
+  deleteTask,
 };

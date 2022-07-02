@@ -1,10 +1,15 @@
-const errorCreateTaskMock = [[
-  {
-    newId: 1,
-    TITLEERRORSIZE: 'lorem ipsum lorem ipsum lorem',
-    status: 'pronto',
-    description: 'atender os clientes de empresa x',
-  },
-]];
+const errorCreateTaskMock ={
+  newId: 1,
+  title: 'lorem ipsum lorem ipsum lorem',
+  status: 'pronto',
+  description: `loremipsumloremipsumloremipsumloremipsumloremipsum
+loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum
+loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum
+loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum
+loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum
+loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum
+loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum
+loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum`,
+};
 
 module.exports = errorCreateTaskMock;
