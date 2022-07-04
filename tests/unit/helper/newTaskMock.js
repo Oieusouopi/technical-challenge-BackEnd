@@ -1,6 +1,6 @@
 const newTaskMock = {
     newTitle: 'um novo titulo',
-    newStatus: ['Pendente', 'Sucesso', 'Error', 'Em andamento'],
+    newStatus: 'Sucesso',
     newDescription: 'Novo "description" qualquer'
 }
 
