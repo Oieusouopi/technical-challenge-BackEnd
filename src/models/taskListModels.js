@@ -18,8 +18,8 @@ const deleteTask = async (id) => {
   return true;
 };
 
-const editTaskTitle = async (id) => {
-  await connection.execute(queryEditTitleTask, [id]);
+const editTaskTitle = async (id, title) => {
+  await connection.execute(queryEditTitleTask, [id, title]);
   return true;
 };
 
