@@ -12,6 +12,7 @@ const taskListModels = require('../../../src/models/taskListModels');
 const taskListServices = require('../../../src/services/taskListServices');
 const createTaskMock = require('../helper/createTaskMock');
 const validMessageCode = require('../../../src/services/validMessageCode');
+const newTaskMock = require('../helper/newTaskMock');
 
 describe('1 - taskListServices.getAllTaskList() wihout error', () => {
   beforeEach(() => {
@@ -107,10 +108,21 @@ describe('4 - taskListServices.deleteTask() wihout error', () => {
   });
 });
 
-// describe('5 - taskListServices.editTask() wihout error', () => {
-//   it('1 - Function to edit a task from the task list in service', () => {
-//     beforeEach(() => {
+describe('5 - taskListServices.editTask() wihout error', () => {
+  beforeEach(() => {
+    sinon.stub(taskListModels, 'editTaskTitle').resolves(true);
+  });
 
-//     });
-//   });
-// });
+  afterEach(() => {
+    taskListModels.editTaskTitle.restore();
+  });
+
+  it('1 - Function to edit a title task from the task list in service',
+      async () => {
+        const {newId} = createTaskMock;
+        const {newTitle} = newTaskMock;
+        const returnFuncEditTaskTitle = await taskListServices
+            .editTaskTitle(newId, newTitle);
+        expect(returnFuncEditTaskTitle).to.be.equal('Title edited with sucess');
+      });
+});

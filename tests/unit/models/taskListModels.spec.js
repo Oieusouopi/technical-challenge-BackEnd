@@ -5,6 +5,7 @@ const sinon = require('sinon');
 // HELPERS
 const createTaskMock = require('../helper/createTaskMock');
 const allTaskMock = require('../helper/allTaskMock');
+const newTaskMock = require('../helper/newTaskMock');
 
 const taskListModels = require('../../../src/models/taskListModels');
 const connection = require('../../../src/models/connection');
@@ -67,9 +68,10 @@ describe('4 - taskListModels.editTaskTitle() wihout error', () => {
   });
 
   it('1 - Function to edit a task correctly on models', async () => {
-    const {newId, title} = createTaskMock;
+    const {newId} = createTaskMock;
+    const {newTitle} = newTaskMock;
     const returnFuncEditTask = await taskListModels
-        .editTaskTitle(newId, title);
+        .editTaskTitle(newId, newTitle);
     expect(returnFuncEditTask).to.be.true;
   });
 });
