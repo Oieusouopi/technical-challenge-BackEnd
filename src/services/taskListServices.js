@@ -33,11 +33,19 @@ const descriptionValidation = (description) => {
   }
 };
 
-const createTask = async (title, status, description) => {
+const responsibleUserValidation = (responsibleUser) => {
+  if (responsibleUser.length > 30) {
+    throw validMessageCode(MESSAGE.RESPONSIBLEUSERINVALI,
+        HTTPSCODE.UNPROCESSABLE);
+  }
+};
+
+const createTask = async (title, responsibleUser, status, description) => {
   titleValidation(title);
   statusValidation(status);
   descriptionValidation(description);
-  await taskListModels.createTask(title, status, description);
+  responsibleUserValidation(responsibleUser);
+  await taskListModels.createTask(title, responsibleUser, status, description);
   const messageToCreatedTask = 'Task created sucessfully';
   return messageToCreatedTask;
 };
@@ -63,9 +71,23 @@ const editTaskTitle = async (id, title) => {
   return messageToEditTitle;
 };
 
+const editTaskDescription = async (id, description) => {
+  await taskListModels.editTaskDescription(id, description);
+  const messageToEditTitle = 'Description edited with sucess';
+  return messageToEditTitle;
+};
+
+const editTaskStatus = async (id, status) => {
+  await taskListModels.editTaskStatus(id, status);
+  const messageToEditTitle = 'Status edited with sucess';
+  return messageToEditTitle;
+};
+
 module.exports = {
   getAllTaskList,
   createTask,
   deleteTask,
   editTaskTitle,
+  editTaskDescription,
+  editTaskStatus,
 };
