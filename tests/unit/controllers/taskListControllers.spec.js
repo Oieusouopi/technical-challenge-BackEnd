@@ -15,7 +15,6 @@ describe('1 - taskListControllers.getAllTaskList() wihout error', () => {
   beforeEach(() => {
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
-    // res.next = sinon.stub().returns();
 
     sinon.stub(taskListServices, 'getAllTaskList').resolves(allTaskList);
   });

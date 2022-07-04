@@ -12,6 +12,7 @@ const taskListModels = require('../../../src/models/taskListModels');
 const taskListServices = require('../../../src/services/taskListServices');
 const createTaskMock = require('../helper/createTaskMock');
 const validMessageCode = require('../../../src/services/validMessageCode');
+const newTaskMock = require('../helper/newTaskMock');
 
 describe('1 - taskListServices.getAllTaskList() wihout error', () => {
   beforeEach(() => {
@@ -22,10 +23,11 @@ describe('1 - taskListServices.getAllTaskList() wihout error', () => {
     taskListModels.getAllTaskList.restore();
   });
 
-  it('1 - Function to get all tasks list correctly on services', async () => {
-    const allTaskList = await taskListServices.getAllTaskList();
-    expect(allTaskList).to.be.equal(...allTaskMock);
-  });
+  it('1 - Function to get all tasks list correctly in the services',
+      async () => {
+        const allTaskList = await taskListServices.getAllTaskList();
+        expect(allTaskList).to.be.equal(...allTaskMock);
+      });
 });
 
 describe('2 - taskListServices.createTask() wihout error', () => {
@@ -37,7 +39,7 @@ describe('2 - taskListServices.createTask() wihout error', () => {
     taskListModels.createTask.restore();
   });
 
-  it('1 - Function to create tasks correctly on services', async () => {
+  it('1 - Function to create tasks correctly in the services', async () => {
     const {title, description, status} = createTaskMock;
     const returnTaskCreate = await taskListServices
         .createTask(title, status, description);
@@ -100,17 +102,28 @@ describe('4 - taskListServices.deleteTask() wihout error', () => {
     taskListModels.deleteTask.restore();
   });
 
-  it('1 - Function to delete a task correctly on service', async () => {
+  it('1 - Function to delete a task correctly in the service', async () => {
     const returnFuncDeleteTask = await taskListServices
         .deleteTask(createTaskMock.newId);
     expect(returnFuncDeleteTask).to.be.equal('Task deleted sucessfully');
   });
 });
 
-// describe('5 - taskListServices.editTask() wihout error', () => {
-//   it('1 - Function to edit a task from the task list in service', () => {
-//     beforeEach(() => {
+describe('5 - taskListServices.editTask() wihout error', () => {
+  beforeEach(() => {
+    sinon.stub(taskListModels, 'editTaskTitle').resolves(true);
+  });
 
-//     });
-//   });
-// });
+  afterEach(() => {
+    taskListModels.editTaskTitle.restore();
+  });
+
+  it('1 - Function to edit a title task from the task list in the services',
+      async () => {
+        const {newId} = createTaskMock;
+        const {newTitle} = newTaskMock;
+        const returnFuncEditTaskTitle = await taskListServices
+            .editTaskTitle(newId, newTitle);
+        expect(returnFuncEditTaskTitle).to.be.equal('Title edited with sucess');
+      });
+});

@@ -5,6 +5,7 @@ const sinon = require('sinon');
 // HELPERS
 const createTaskMock = require('../helper/createTaskMock');
 const allTaskMock = require('../helper/allTaskMock');
+const newTaskMock = require('../helper/newTaskMock');
 
 const taskListModels = require('../../../src/models/taskListModels');
 const connection = require('../../../src/models/connection');
@@ -18,7 +19,7 @@ describe('1 - taskListModels.getAllTaskList() wihout error', () => {
     connection.execute.restore();
   });
 
-  it('1 - Function to get all task list correctly on models', async () => {
+  it('1 - Function to get all task list correctly in the models', async () => {
     const allTaskList = await taskListModels.getAllTaskList();
     expect(allTaskList).to.be.deep.equal(...allTaskMock);
   });
@@ -33,7 +34,7 @@ describe('2 - taskListModels.createTask() wihout error', () => {
     connection.execute.restore();
   });
 
-  it('1 - Function to create a task correctly on models', async () => {
+  it('1 - Function to create a task correctly in the models', async () => {
     const {newId, title, status, date, description} = createTaskMock;
     const returnTasKCreate = await taskListModels.createTask(title,
         status, date, description);
@@ -50,7 +51,7 @@ describe('3 - taskListModels.deleteTask() wihout error', () => {
     connection.execute.restore();
   });
 
-  it('1 - Function to delete a task correctly on models', async () => {
+  it('1 - Function to delete a task correctly in the models', async () => {
     const returnFuncDeleteTask = await taskListModels
         .deleteTask(createTaskMock.newId);
     expect(returnFuncDeleteTask).to.be.true;
@@ -66,9 +67,11 @@ describe('4 - taskListModels.editTaskTitle() wihout error', () => {
     connection.execute.restore();
   });
 
-  it('1 - Function to edit a task correctly on models', async () => {
+  it('1 - Function to edit a task correctly in the models', async () => {
+    const {newId} = createTaskMock;
+    const {newTitle} = newTaskMock;
     const returnFuncEditTask = await taskListModels
-        .editTaskTitle(createTaskMock.newId);
+        .editTaskTitle(newId, newTitle);
     expect(returnFuncEditTask).to.be.true;
   });
 });

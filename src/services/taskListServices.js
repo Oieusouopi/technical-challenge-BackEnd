@@ -57,8 +57,15 @@ const deleteTask = async (id) => {
   return messageToDeleteTask;
 };
 
+const editTaskTitle = async (id, title) => {
+  await taskListModels.editTaskTitle(id, title);
+  const messageToEditTitle = 'Title edited with sucess';
+  return messageToEditTitle;
+};
+
 module.exports = {
   getAllTaskList,
   createTask,
   deleteTask,
+  editTaskTitle,
 };
