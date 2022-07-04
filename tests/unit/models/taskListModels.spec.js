@@ -35,9 +35,10 @@ describe('2 - taskListModels.createTask() wihout error', () => {
   });
 
   it('1 - Function to create a task correctly in the models', async () => {
-    const {newId, title, status, date, description} = createTaskMock;
+    const {newId, title, responsibleUser,
+      status, date, description} = createTaskMock;
     const returnTasKCreate = await taskListModels.createTask(title,
-        status, date, description);
+        responsibleUser, status, date, description);
     expect(returnTasKCreate).to.be.deep.equal(newId);
   });
 });
@@ -58,7 +59,7 @@ describe('3 - taskListModels.deleteTask() wihout error', () => {
   });
 });
 
-describe('4 - taskListModels.editTaskTitle() wihout error', () => {
+describe('4 - taskListModels.editTask() wihout error', () => {
   beforeEach(() => {
     sinon.stub(connection, 'execute').resolves(true);
   });
@@ -67,11 +68,28 @@ describe('4 - taskListModels.editTaskTitle() wihout error', () => {
     connection.execute.restore();
   });
 
-  it('1 - Function to edit a task correctly in the models', async () => {
+  it('1 - Function to edit title task correctly in the models', async () => {
     const {newId} = createTaskMock;
     const {newTitle} = newTaskMock;
     const returnFuncEditTask = await taskListModels
         .editTaskTitle(newId, newTitle);
     expect(returnFuncEditTask).to.be.true;
+  });
+
+  it(`2 - Function to edit description task correctly
+ in the models`, async () => {
+    const {newId} = createTaskMock;
+    const {newDescription} = newTaskMock;
+    const returnFuncEditTask = await taskListModels
+        .editTaskDescription(newId, newDescription);
+    expect(returnFuncEditTask).to.be.true;
+  });
+
+  it('3 - Function to edit status task correctly in the models', async () => {
+    const {newId} = createTaskMock;
+    const {newStatus} = newTaskMock;
+    const returnFunc = await taskListModels
+        .editTaskStatus(newId, newStatus);
+    expect(returnFunc).to.be.true;
   });
 });
