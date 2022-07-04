@@ -1,5 +1,6 @@
 const errorCreateTaskMock ={
   newId: 1,
+  responsibleUser: 'lorem ipsum lorem ipsum loremlorem ipsum lorem ipsum lorem',
   title: 'lorem ipsum lorem ipsum lorem',
   status: 'pronto',
   description: `loremipsumloremipsumloremipsumloremipsumloremipsum
