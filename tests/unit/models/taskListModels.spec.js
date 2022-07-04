@@ -67,8 +67,9 @@ describe('4 - taskListModels.editTaskTitle() wihout error', () => {
   });
 
   it('1 - Function to edit a task correctly on models', async () => {
+    const {newId, title} = createTaskMock;
     const returnFuncEditTask = await taskListModels
-        .editTaskTitle(createTaskMock.newId);
+        .editTaskTitle(newId, title);
     expect(returnFuncEditTask).to.be.true;
   });
 });
